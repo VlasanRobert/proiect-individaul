@@ -263,7 +263,7 @@ public class Mainpage extends javax.swing.JFrame {
       }
       for (String mail: mailuri){
           emailsender e = new emailsender();
-          e.sendEmail(new emailclient(mail, "pula", "suge-o", "esti gay"));
+          e.sendEmail(new emailclient(mail, "test", "teste","test"));
       }
       
      }catch(Exception ex){
