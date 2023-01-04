@@ -34,7 +34,10 @@ public class adminpage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         toate_masini_buton = new javax.swing.JButton();
-        actbuton1 = new javax.swing.JButton();
+        addclienti = new javax.swing.JButton();
+        add_carsbutt = new javax.swing.JButton();
+        logoutbut = new javax.swing.JButton();
+        actbuton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,11 +106,34 @@ public class adminpage extends javax.swing.JFrame {
             }
         });
 
-        actbuton1.setBackground(new java.awt.Color(162, 156, 241));
-        actbuton1.setText("Actualizare date");
-        actbuton1.addActionListener(new java.awt.event.ActionListener() {
+        addclienti.setBackground(new java.awt.Color(162, 156, 241));
+        addclienti.setText("Adaugare clienti");
+        addclienti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actbuton1ActionPerformed(evt);
+                addclientiActionPerformed(evt);
+            }
+        });
+
+        add_carsbutt.setBackground(new java.awt.Color(162, 156, 241));
+        add_carsbutt.setText("Adaugare Masini");
+        add_carsbutt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_carsbuttActionPerformed(evt);
+            }
+        });
+
+        logoutbut.setText("Log out");
+        logoutbut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutbutActionPerformed(evt);
+            }
+        });
+
+        actbuton3.setBackground(new java.awt.Color(162, 156, 241));
+        actbuton3.setText("Stergere Masini");
+        actbuton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actbuton3ActionPerformed(evt);
             }
         });
 
@@ -116,22 +142,28 @@ public class adminpage extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Notificare_buton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Masini_disp_buton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lista_clienti_buton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addangajat, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addangajat, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(add_carsbutt, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(374, 380, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(actbuton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(toate_masini_buton, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))))
+                            .addComponent(toate_masini_buton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(actbuton3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addclienti, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(69, 69, 69))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(logoutbut)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,8 +180,14 @@ public class adminpage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addangajat, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(actbuton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(244, 244, 244))
+                    .addComponent(actbuton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(add_carsbutt, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addclienti, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
+                .addComponent(logoutbut)
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,6 +218,9 @@ public class adminpage extends javax.swing.JFrame {
 
     private void Masini_disp_butonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Masini_disp_butonActionPerformed
         // TODO add your handling code here:
+        dispose();
+       ListaToateMasinile m = new ListaToateMasinile();
+       m.setVisible(true);
     }//GEN-LAST:event_Masini_disp_butonActionPerformed
 
     private void toate_masini_butonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toate_masini_butonActionPerformed
@@ -188,21 +229,45 @@ public class adminpage extends javax.swing.JFrame {
 
     private void Notificare_butonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Notificare_butonActionPerformed
         // TODO add your handling code here:
+         dispose();
+       Send m = new Send();
+       m.setVisible(true);
         
         
         
         
     }//GEN-LAST:event_Notificare_butonActionPerformed
 
-    private void actbuton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actbuton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_actbuton1ActionPerformed
+    private void addclientiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addclientiActionPerformed
+        // TODO add yo
+         dispose();
+         adaugareclienti m = new adaugareclienti();
+        m.setVisible(true);
+    }//GEN-LAST:event_addclientiActionPerformed
 
     private void lista_clienti_butonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lista_clienti_butonActionPerformed
   dispose();
          MeniuClienti m = new MeniuClienti();
         m.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_lista_clienti_butonActionPerformed
+
+    private void add_carsbuttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_carsbuttActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        AdaugareMasini m = new AdaugareMasini();
+        m.setVisible(true);
+    }//GEN-LAST:event_add_carsbuttActionPerformed
+
+    private void logoutbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbutActionPerformed
+        // TODO add your handling code here:
+         dispose();
+         LoginPage m = new LoginPage();
+        m.setVisible(true);
+    }//GEN-LAST:event_logoutbutActionPerformed
+
+    private void actbuton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actbuton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actbuton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,12 +307,15 @@ public class adminpage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Masini_disp_buton;
     private javax.swing.JButton Notificare_buton;
-    private javax.swing.JButton actbuton1;
+    private javax.swing.JButton actbuton3;
+    private javax.swing.JButton add_carsbutt;
     private javax.swing.JButton addangajat;
+    private javax.swing.JButton addclienti;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton lista_clienti_buton;
+    private javax.swing.JButton logoutbut;
     private javax.swing.JButton toate_masini_buton;
     // End of variables declaration//GEN-END:variables
 

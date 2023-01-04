@@ -24,6 +24,19 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -64,7 +77,7 @@ public class Mainpage extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        addclientlb = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -78,6 +91,11 @@ public class Mainpage extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(162, 156, 241));
         jButton1.setText("Lista Clientilor");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(162, 156, 241));
         jButton3.setText("Notificare clienti");
@@ -95,11 +113,11 @@ public class Mainpage extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(162, 156, 241));
-        jButton4.setText("Lista masinilor disponibile");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        addclientlb.setBackground(new java.awt.Color(162, 156, 241));
+        addclientlb.setText("Adaugare client nou");
+        addclientlb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                addclientlbActionPerformed(evt);
             }
         });
 
@@ -137,7 +155,7 @@ public class Mainpage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addclientlb, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -148,7 +166,7 @@ public class Mainpage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addclientlb, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(126, 126, 126)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,19 +196,34 @@ public class Mainpage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
         // TODO add your handling code here:
+    dispose();
+       ListaToateMasinile m = new ListaToateMasinile();
+       m.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void addclientlbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addclientlbActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+         dispose();
+         adaugareclienti m = new adaugareclienti();
+        m.setVisible(true);
+    }//GEN-LAST:event_addclientlbActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       dispose();
+       Send m = new Send();
+       m.setVisible(true);
         // TODO add your handling code here:
-        
-        emailsend();
-        
+       
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+         MeniuClienti m = new MeniuClienti();
+        m.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,10 +261,10 @@ public class Mainpage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addclientlb;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -239,60 +272,39 @@ public class Mainpage extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
-    
-   
-   
-    
-    
-    
-    public void emailsend()
-{
-    List<String> mailuri = new ArrayList();
-    Connection dbconn1 = DBConnection.connectDB();
-  if(dbconn1 != null){
-      
-     try{
-          
-      PreparedStatement st = (PreparedStatement)
-                dbconn1.prepareStatement("Select email from clienti");
-    
-      
-      ResultSet res = st.executeQuery();
-      while(res.next()){
-          mailuri.add(res.getString("email"));
-      }
-      for (String mail: mailuri){
-          emailsender e = new emailsender();
-          e.sendEmail(new emailclient(mail, "test", "teste","test"));
-      }
-      
-     }catch(Exception ex){
-     ex.printStackTrace();
-     }
-        
-        
-           
-           
-       }
-  else 
-      System.out.print("nu e bine");
-      
-  
-  
-  
-  }  
-        
-                
+   public class SendEmail {
+    public static void emailsend(String[] args) {
+        // Set system properties
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "vlasancosmi@gmail.com");
+        props.put("mail.smtp.port", "lkfdavoltjzidbyb");
 
+        // Create a session
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("vlasancosmi@gmail.com", "lkfdavoltjzidbyb");
+                    }
+                }); 
+          try {
+            // Create a message
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("from_email@example.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse("to_email@example.com"));
+            message.setSubject("Subject");
+            message.setText("This is the message body");
 
-
-
-
-
-
-
+            // Send the message
+            Transport.send(message);
+            System.out.println("Email sent successfully.");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+   }
 }
-    
-
-
-
+   
+  

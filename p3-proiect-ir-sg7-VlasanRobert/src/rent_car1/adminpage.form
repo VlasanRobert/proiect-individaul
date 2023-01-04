@@ -50,9 +50,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="Notificare_buton" min="-2" pref="263" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -62,15 +62,22 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lista_clienti_buton" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
                               <Component id="addangajat" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="add_carsbutt" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="374" pref="380" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="actbuton1" max="32767" attributes="0"/>
-                              <Component id="toate_masini_buton" pref="263" max="32767" attributes="0"/>
+                              <Component id="toate_masini_buton" max="32767" attributes="0"/>
+                              <Component id="actbuton3" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="addclienti" min="-2" pref="263" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="logoutbut" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -91,9 +98,16 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="addangajat" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
-                      <Component id="actbuton1" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="actbuton3" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="add_carsbutt" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="addclienti" alignment="3" min="-2" pref="90" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <Component id="logoutbut" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -192,15 +206,45 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toate_masini_butonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="actbuton1">
+        <Component class="javax.swing.JButton" name="addclienti">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f1" green="9c" red="a2" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Actualizare date"/>
+            <Property name="text" type="java.lang.String" value="Adaugare clienti"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actbuton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addclientiActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="add_carsbutt">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f1" green="9c" red="a2" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Adaugare Masini"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_carsbuttActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="logoutbut">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Log out"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutbutActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="actbuton3">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f1" green="9c" red="a2" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Stergere Masini"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actbuton3ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

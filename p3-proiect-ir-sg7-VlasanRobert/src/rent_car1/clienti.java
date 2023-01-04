@@ -14,17 +14,42 @@ public class clienti {
     String prenume;
     String email;
     String dataretur;
+    String numar_inmatriculare;
+    String data_primire;
+    Integer pret_plata;
 
-    public clienti() {
+    public void setPret_plata(Integer pret_plata) {
+        this.pret_plata = pret_plata;
     }
 
-    public clienti(Integer id, String nume, String prenume, String email, String dataretur) {
+    public void setData_primire(String data_primire) {
+        this.data_primire = data_primire;
+    }
+
+    public Integer getPret_plata() {
+        return pret_plata;
+    }
+
+    public String getData_primire() {
+        return data_primire;
+    }
+
+    public clienti(Integer id, String nume, String prenume, String email, String dataretur, String numar_inmatriculare, String data_primire, Integer pret_plata) {
         this.id = id;
         this.nume = nume;
         this.prenume = prenume;
         this.email = email;
         this.dataretur = dataretur;
+        this.numar_inmatriculare = numar_inmatriculare;
+        this.data_primire = data_primire;
+        this.pret_plata = pret_plata;
     }
+
+    public clienti() {
+    }
+
+    
+   
 
     public String getDataretur() {
         return dataretur;
@@ -64,6 +89,23 @@ public class clienti {
 
     public void setPrenume(String prenume) {
         this.prenume = prenume;
+    }
+
+    public String getNumar_inmatriculare() {
+        return numar_inmatriculare;
+    }
+
+    public void setNumar_inmatriculare(String numar_inmatriculare) {
+        this.numar_inmatriculare = numar_inmatriculare;
+    }
+
+    public clienti(Integer id, String nume, String prenume, String email, String dataretur, String numar_inmatriculare) {
+        this.id = id;
+        this.nume = nume;
+        this.prenume = prenume;
+        this.email = email;
+        this.dataretur = dataretur;
+        this.numar_inmatriculare = numar_inmatriculare;
     }
     
     

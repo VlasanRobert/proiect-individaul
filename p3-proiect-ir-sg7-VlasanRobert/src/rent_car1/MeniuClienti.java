@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author OZN cOxat
@@ -40,6 +43,7 @@ public class MeniuClienti extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         backbt = new javax.swing.JButton();
+        afisare_buton = new javax.swing.JButton();
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\OZN cOxat\\Documents\\faculta\\an 2\\pi\\rent_car1\\caricon.png")); // NOI18N
         jLabel1.setText("jLabel1");
@@ -70,13 +74,13 @@ public class MeniuClienti extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nume", "Prenume", "email", "Data de returnare", "Numar inmatriculare"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -88,17 +92,29 @@ public class MeniuClienti extends javax.swing.JFrame {
             }
         });
 
+        afisare_buton.setBackground(new java.awt.Color(162, 156, 241));
+        afisare_buton.setText("Afisati lista clientilor");
+        afisare_buton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afisare_butonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(28, 28, 28)
                 .addComponent(backbt)
-                .addGap(216, 216, 216)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(59, Short.MAX_VALUE)
+                .addComponent(afisare_buton, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addGap(328, 328, 328))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,13 +122,14 @@ public class MeniuClienti extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 116, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backbt)
-                        .addGap(139, 139, 139))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(afisare_buton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(backbt)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,6 +162,13 @@ public class MeniuClienti extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_backbtActionPerformed
+
+    private void afisare_butonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afisare_butonActionPerformed
+
+        // TODO add your handling code here:
+
+        afisare();
+    }//GEN-LAST:event_afisare_butonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +206,7 @@ public class MeniuClienti extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton afisare_buton;
     private javax.swing.JButton backbt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -190,4 +215,43 @@ public class MeniuClienti extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+public  void afisare()
+{
+Connection dbconn = DBConnection.connectDB();
+    if(dbconn != null){
+    try{
+    PreparedStatement st=(PreparedStatement)
+                    dbconn.prepareStatement("SELECT * FROM clienti WHERE DATEDIFF(CURDATE(),dataretur) < 2 and CURDATE() < dataretur ");   
+            
+             
+    
+            ResultSet res = st.executeQuery();
+            while(res.next())
+            {
+            String nume = res.getString("nume");
+            String prenume = res.getString("prenume");
+            String email = res.getString("email");
+            String data_retur = res.getString("dataretur");
+            String numar_inmatriculare = res.getString("inma");
+            
+            //String array
+           // jTable1.setModel(new DefaultTableModel());
+            String tbDta[] = {nume,prenume,email,data_retur,numar_inmatriculare};
+            DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
+            //add string array data into jtbale
+            tblModel.addRow((tbDta));
+            
+            }
+          
+                JOptionPane.showMessageDialog(this, "Datele despre clienti au fost afisate cu succes ","Suces",JOptionPane.INFORMATION_MESSAGE);
+    
+    }catch(SQLException ex){
+   Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+}}
+
+
+
 }

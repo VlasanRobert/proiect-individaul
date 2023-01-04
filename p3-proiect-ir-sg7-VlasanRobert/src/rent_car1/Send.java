@@ -3,6 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package rent_car1;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Arrays;
@@ -13,16 +22,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author OZN cOxat
  */
-public class Register extends javax.swing.JFrame {
+public class Send extends javax.swing.JFrame {
 
     /**
-     * Creates new form Register
+     * Creates new form Send
      */
-    public Register() {
+    public Send() {
         initComponents();
     }
 
@@ -39,10 +49,13 @@ public class Register extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        RegisterName = new javax.swing.JTextField();
-        registerParola = new javax.swing.JTextField();
+        datalb = new javax.swing.JTextField();
+        nrlb = new javax.swing.JTextField();
+        emaillb = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         Registerbut = new javax.swing.JButton();
         backbtn = new javax.swing.JButton();
 
@@ -57,7 +70,7 @@ public class Register extends javax.swing.JFrame {
         jLabel2.setText("jLabel1");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel4.setText("Register ");
+        jLabel4.setText("Send an email ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -65,7 +78,7 @@ public class Register extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(268, 268, 268)
+                .addGap(218, 218, 218)
                 .addComponent(jLabel4)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -80,15 +93,23 @@ public class Register extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        RegisterName.addActionListener(new java.awt.event.ActionListener() {
+        datalb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterNameActionPerformed(evt);
+                datalbActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Username");
+        emaillb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emaillbActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setText("Password");
+        jLabel3.setText("Email ");
+
+        jLabel5.setText("Data de retur");
+
+        jLabel6.setText("Numarul de inmatriculare");
 
         Registerbut.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Registerbut.setText("Register");
@@ -113,21 +134,33 @@ public class Register extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
-                        .addGap(164, 164, 164)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(jLabel1)
+                                .addGap(106, 106, 106)
+                                .addComponent(jLabel3)
+                                .addGap(79, 79, 79))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(70, 70, 70))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(53, 53, 53)))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registerParola, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RegisterName, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(emaillb, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nrlb, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(datalb, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(379, 379, 379)
                         .addComponent(Registerbut, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backbtn)))
-                .addContainerGap(419, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,32 +168,70 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(backbtn)
-                .addGap(99, 99, 99)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RegisterName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emaillb, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registerParola, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datalb, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(99, 99, 99)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nrlb, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(105, 105, 105)
                 .addComponent(Registerbut, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 89, Short.MAX_VALUE))
+                .addGap(0, 86, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void datalbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datalbActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_datalbActionPerformed
+
+    private void RegisterbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterbutActionPerformed
+        // TODO add your handling code here:
+       String email;
+       String dataret;
+       String numar_inmatriculare;
+       email =  emaillb.getText();
+        dataret = datalb.getText();
+        numar_inmatriculare = nrlb.getText();
+        //utilizatori.setIsadmin(String.valueOf(registerRol.getText()));
+        if(email.isEmpty() || dataret.isEmpty() || numar_inmatriculare.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Toate camputile trebuie completate","Error",JOptionPane.ERROR_MESSAGE);
+
+        }
+        else
+        {
+            emailsend(email,dataret,numar_inmatriculare);
+            emaillb.setText(null);
+            datalb.setText(null);
+            nrlb.setText(null);
+            
+        }
+
+    }//GEN-LAST:event_RegisterbutActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         // TODO add your handling code here:
@@ -170,31 +241,10 @@ public class Register extends javax.swing.JFrame {
         m.setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
-    private void RegisterbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterbutActionPerformed
+    private void emaillbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emaillbActionPerformed
         // TODO add your handling code here:
-        User utilizatori = new User();
-        utilizatori.setUsername(RegisterName.getText());
-        utilizatori.setPassword(registerParola.getText());
-        //utilizatori.setIsadmin(String.valueOf(registerRol.getText()));
-        if(utilizatori.getUsername().isEmpty() || utilizatori.getPassword().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Toate camputile trebuie completate","Error",JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_emaillbActionPerformed
 
-        }
-        else
-        {
-            registerUser(utilizatori.getUsername(),utilizatori.getPassword());
-        }
-
-    }//GEN-LAST:event_RegisterbutActionPerformed
-
-    private void RegisterNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterNameActionPerformed
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RegisterNameActionPerformed
-    
-    
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -212,65 +262,80 @@ public class Register extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Send.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Send.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Send.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Send.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new Send().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField RegisterName;
     private javax.swing.JButton Registerbut;
     private javax.swing.JButton backbtn;
+    private javax.swing.JTextField datalb;
+    private javax.swing.JTextField emaillb;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField registerParola;
+    private javax.swing.JTextField nrlb;
     // End of variables declaration//GEN-END:variables
 
-
-private void registerUser(String Username,String parola)
-{
-        
-    Connection dbconn = DBConnection.connectDB();
-    if(dbconn != null){
-    try{
-    PreparedStatement st=(PreparedStatement)
-                    dbconn.prepareStatement("INSERT INTO useri(username,password) VALUES(?,?)");   
-            st.setString(1, Username);
-            st.setString(2, parola);
-            
-            int res= st.executeUpdate();
-          
-                JOptionPane.showMessageDialog(this, "Datele despre utilizator au fost salvate cu succes","Suces",JOptionPane.INFORMATION_MESSAGE);
     
-    }catch(SQLException ex){
-   Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-    }
     
-    }
-    else
-    {
-    System.out.println("Database connection failed");
-    }
     
-        
+    
 
 
+
+    public static void emailsend(String mail,String data,String nrin) {
+        // Set system properties
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        // Create a session
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("vlasancosmi@gmail.com", "lkfd avol tjzi dbyb");
+                    }
+                });
+
+        try {
+            // Create a message
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("vlasancosmi@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(mail));
+            message.setSubject("Returnare masina");
+            message.setText("Buna ziua trebuie sa returnanti masina cu numarul de inmatriculare"+nrin+"pana in data de"+data+"O zi buna");
+
+            // Send the message
+            Transport.send(message);
+            System.out.println("Email sent successfully.");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
-}
+
+
+
