@@ -1,8 +1,11 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package rent_car1;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  *
@@ -107,6 +110,36 @@ public class clienti {
         this.dataretur = dataretur;
         this.numar_inmatriculare = numar_inmatriculare;
     }
+    
+    public static boolean isValidEmail(String email) {
+        final String EMAIL_REGEX = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        boolean isValid=matcher.matches();
+        return isValid;
+    }
+    public static boolean isValidNri(String numar_inmatriculare) {
+        final String REGISTRATION_NUMBER_REGEX = "^[A-Z]{2}\\d{2}[A-Z]{3}$";
+        Pattern pattern = Pattern.compile(REGISTRATION_NUMBER_REGEX);
+        Matcher matcher = pattern.matcher(numar_inmatriculare);
+        boolean isValid=matcher.matches();
+        return isValid;
+    }
+    public static boolean isValidNume(String nume) {
+        final String NUME_REGEX = "^[A-Z][a-z]+$";
+        Pattern pattern = Pattern.compile(NUME_REGEX);
+        Matcher matcher = pattern.matcher(nume);
+        boolean isValid=matcher.matches();
+        return isValid;
+    }
+     public static boolean isValidPrenume(String Prenume) {
+        final String PRENUME_REGEX = "^[A-Z][a-z]+$";
+        Pattern pattern = Pattern.compile(PRENUME_REGEX);
+        Matcher matcher = pattern.matcher(Prenume);
+        boolean isValid=matcher.matches();
+        return isValid;
+    }
+    
     
     
     

@@ -4,6 +4,9 @@
  */
 package rent_car1;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author OZN cOxat
@@ -20,6 +23,29 @@ public class Masini {
     String serie_sasiu;
     String an_fabricatie;
     Integer valoare;
+    Integer status;
+
+    public Masini(String marca, String model, String numera_inmatriculare, Integer capacitate_motor, Integer nr_km, Integer cai_putere, Integer pret, String serie_sasiu, String an_fabricatie, Integer valoare, Integer status) {
+        this.marca = marca;
+        this.model = model;
+        this.numera_inmatriculare = numera_inmatriculare;
+        this.capacitate_motor = capacitate_motor;
+        this.nr_km = nr_km;
+        this.cai_putere = cai_putere;
+        this.pret = pret;
+        this.serie_sasiu = serie_sasiu;
+        this.an_fabricatie = an_fabricatie;
+        this.valoare = valoare;
+        this.status = status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
 
     
 
@@ -120,4 +146,23 @@ public class Masini {
     public void setValoare(Integer valoare) {
         this.valoare = valoare;
     }
+    //acest regex ne ajuta pentru verificarea validitati numerelor de inmatriculare din romania 
+     public static boolean isValidNri(String numar_inmatriculare) {
+        final String REGISTRATION_NUMBER_REGEX = "^[A-Z]{2}\\d{2}[A-Z]{3}$";
+        Pattern pattern = Pattern.compile(REGISTRATION_NUMBER_REGEX);
+        Matcher matcher = pattern.matcher(numar_inmatriculare);
+        boolean isValid=matcher.matches();
+        return isValid;
+    }
+     
+      public static boolean isValidVIN(String serie) {
+        final String SERIE_REGEX = "^[A-Z\\d]{16}$";
+        Pattern pattern = Pattern.compile(SERIE_REGEX);
+        Matcher matcher = pattern.matcher(serie);
+        boolean isValid=matcher.matches();
+        return isValid;
+    }
+      //3C6JR6AG8DG572873
+      //^[A-HJ-NPR-Z\\d]{8}[\\dX][A-HJ-NPR-Z\\d]{2}\\d{6}$
+      
 }

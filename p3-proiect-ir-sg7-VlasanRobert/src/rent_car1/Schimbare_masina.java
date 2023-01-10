@@ -3,15 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package rent_car1;
-import java.util.Properties;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.sql.Connection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Arrays;
@@ -20,21 +21,33 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.util.List;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JPanel;
 
 /**
  *
  * @author OZN cOxat
  */
-public class Send extends javax.swing.JFrame {
+public class Schimbare_masina extends javax.swing.JFrame {
 
     /**
-     * Creates new form Send
+     * Creates new form Schimbare_masina
      */
-    public Send() {
+    public Schimbare_masina() {
         initComponents();
     }
 
@@ -50,25 +63,21 @@ public class Send extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        emaillb = new javax.swing.JTextField();
+        nrilb = new javax.swing.JTextField();
+        nrlb1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        datalb = new javax.swing.JTextField();
-        nrlb = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         Registerbut = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
         backbtn = new javax.swing.JButton();
-        addclientlb = new javax.swing.JButton();
+        schimblb = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Dealocarebt = new javax.swing.JButton();
         Dealocarebt1 = new javax.swing.JButton();
         displb = new javax.swing.JButton();
-        schimblb = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,34 +89,29 @@ public class Send extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\OZN cOxat\\Documents\\faculta\\an 2\\pi\\rent_car1\\caricon.png")); // NOI18N
         jLabel2.setText("jLabel1");
 
-        jLabel3.setText("Email ");
-
-        emaillb.setBackground(new java.awt.Color(180, 181, 181));
-        emaillb.setBorder(null);
-        emaillb.addActionListener(new java.awt.event.ActionListener() {
+        nrilb.setBackground(new java.awt.Color(180, 181, 181));
+        nrilb.setBorder(null);
+        nrilb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emaillbActionPerformed(evt);
+                nrilbActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Data de retur");
-
-        datalb.setBackground(new java.awt.Color(180, 181, 181));
-        datalb.setBorder(null);
-        datalb.addActionListener(new java.awt.event.ActionListener() {
+        nrlb1.setBackground(new java.awt.Color(180, 181, 181));
+        nrlb1.setBorder(null);
+        nrlb1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                datalbActionPerformed(evt);
+                nrlb1ActionPerformed(evt);
             }
         });
 
-        nrlb.setBackground(new java.awt.Color(180, 181, 181));
-        nrlb.setBorder(null);
+        jLabel5.setText("Masina veche");
 
-        jLabel6.setText("Numarul de inmatriculare");
+        jLabel3.setText("Masina noua");
 
         Registerbut.setBackground(new java.awt.Color(162, 156, 241));
         Registerbut.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Registerbut.setText("Send");
+        Registerbut.setText("Change");
         Registerbut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterbutActionPerformed(evt);
@@ -120,68 +124,56 @@ public class Send extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(139, 139, 139))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(137, 137, 137)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(emaillb, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(115, 115, 115)
+                            .addComponent(Registerbut, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6))
+                                        .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(nrlb, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(datalb, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(Registerbut, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(208, Short.MAX_VALUE))
+                                        .addComponent(nrlb1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(nrilb, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emaillb, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                    .addComponent(nrilb, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datalb, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nrlb1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nrlb, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(Registerbut, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -193,11 +185,19 @@ public class Send extends javax.swing.JFrame {
             }
         });
 
-        addclientlb.setBackground(new java.awt.Color(162, 156, 241));
-        addclientlb.setText("Adaugare client nou");
-        addclientlb.addActionListener(new java.awt.event.ActionListener() {
+        schimblb.setBackground(new java.awt.Color(162, 156, 241));
+        schimblb.setText("Schimba masina");
+        schimblb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addclientlbActionPerformed(evt);
+                schimblbActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(162, 156, 241));
+        jButton3.setText("Notificare clienti");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -233,19 +233,11 @@ public class Send extends javax.swing.JFrame {
             }
         });
 
-        schimblb.setBackground(new java.awt.Color(162, 156, 241));
-        schimblb.setText("Schimba masina");
-        schimblb.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(162, 156, 241));
+        jButton4.setText("Lista Clientilor");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schimblbActionPerformed(evt);
-            }
-        });
-
-        jButton1.setBackground(new java.awt.Color(162, 156, 241));
-        jButton1.setText("Lista Clientilor");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -254,28 +246,31 @@ public class Send extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backbtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(schimblb, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Dealocarebt, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Dealocarebt1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(displb, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(schimblb, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addComponent(addclientlb, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backbtn)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(addclientlb, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(schimblb, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -285,60 +280,47 @@ public class Send extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(displb, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(schimblb, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(backbtn)
-                .addGap(15, 15, 15))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void datalbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datalbActionPerformed
+    private void nrilbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nrilbActionPerformed
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_datalbActionPerformed
+    }//GEN-LAST:event_nrilbActionPerformed
 
     private void RegisterbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterbutActionPerformed
         // TODO add your handling code here:
-       String email;
-       String dataret;
-       String numar_inmatriculare;
-       email =  emaillb.getText();
-        dataret = datalb.getText();
-        numar_inmatriculare = nrlb.getText();
-        //utilizatori.setIsadmin(String.valueOf(registerRol.getText()));
-        if(email.isEmpty() || dataret.isEmpty() || numar_inmatriculare.isEmpty()){
-            JOptionPane.showMessageDialog(this,"Toate camputile trebuie completate","Error",JOptionPane.ERROR_MESSAGE);
-
+          
+        String masina_retur = nrilb.getText();
+        String masina_returveche = nrlb1.getText();
+          
+        if(!isValidNri(masina_retur) || !isValidNri(masina_returveche)) {
+            JOptionPane.showMessageDialog(this,"Formatul numarului de inmatriculare este gresit  este incorect","Error",JOptionPane.ERROR_MESSAGE);
         }
-        else
-        {
-            emailsend(email,dataret,numar_inmatriculare);
-            emaillb.setText(null);
-            datalb.setText(null);
-            nrlb.setText(null);
-            
+        else {
+            schimbmasina(masina_retur,masina_returveche);
+
+            nrilb.setText(null);
+            nrlb1.setText(null);
         }
 
     }//GEN-LAST:event_RegisterbutActionPerformed
@@ -351,16 +333,24 @@ public class Send extends javax.swing.JFrame {
         m.setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
-    private void emaillbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emaillbActionPerformed
+    private void nrlb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nrlb1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emaillbActionPerformed
+    }//GEN-LAST:event_nrlb1ActionPerformed
 
-    private void addclientlbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addclientlbActionPerformed
+    private void schimblbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schimblbActionPerformed
+
         // TODO add your handling code here:
         dispose();
-        adaugareclienti m = new adaugareclienti();
+        Schimbare_masina m = new Schimbare_masina();
         m.setVisible(true);
-    }//GEN-LAST:event_addclientlbActionPerformed
+    }//GEN-LAST:event_schimblbActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        dispose();
+        Send m = new Send();
+        m.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
@@ -389,20 +379,12 @@ public class Send extends javax.swing.JFrame {
         m.setVisible(true);
     }//GEN-LAST:event_displbActionPerformed
 
-    private void schimblbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schimblbActionPerformed
-
-        // TODO add your handling code here:
-        dispose();
-        Schimbare_masina m = new Schimbare_masina();
-        m.setVisible(true);
-    }//GEN-LAST:event_schimblbActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         dispose();
         MeniuClienti m = new MeniuClienti();
         m.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,20 +403,20 @@ public class Send extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Send.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Schimbare_masina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Send.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Schimbare_masina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Send.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Schimbare_masina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Send.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Schimbare_masina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Send().setVisible(true);
+                new Schimbare_masina().setVisible(true);
             }
         });
     }
@@ -443,74 +425,111 @@ public class Send extends javax.swing.JFrame {
     public javax.swing.JButton Dealocarebt;
     public javax.swing.JButton Dealocarebt1;
     private javax.swing.JButton Registerbut;
-    private javax.swing.JButton addclientlb;
     private javax.swing.JButton backbtn;
-    private javax.swing.JTextField datalb;
     private javax.swing.JButton displb;
-    private javax.swing.JTextField emaillb;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField nrlb;
+    private javax.swing.JTextField nrilb;
+    private javax.swing.JTextField nrlb1;
     public javax.swing.JButton schimblb;
     // End of variables declaration//GEN-END:variables
-
-    
-    
-    
-    
-
-
-
-    public static void emailsend(String mail,String data,String nrin) {
-        // Set system properties
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        // Create a session
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("vlasancosmi@gmail.com", "lkfd avol tjzi dbyb");
-                    }
-                });
-
-        try {
-            // Create a message
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("vlasancosmi@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(mail));
-            message.setSubject("Returnare masina");
-            message.setText("Buna ziua trebuie sa returnanti masina cu numarul de inmatriculare "+nrin+" pana in data de "+data+" O zi buna ");
-
-            // Send the message
-            Transport.send(message);
-            System.out.println("Email sent successfully.");
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
+public static boolean isValidNri(String numar_inmatriculare) {
+        final String REGISTRATION_NUMBER_REGEX = "^[A-Z]{2}\\d{2}[A-Z]{3}$";
+        Pattern pattern = Pattern.compile(REGISTRATION_NUMBER_REGEX);
+        Matcher matcher = pattern.matcher(numar_inmatriculare);
+        boolean isValid=matcher.matches();
+        return isValid;
     }
+
+public void schimbmasina(String numar_inmatriculare,String numar_inmatriculare_vechi)
+{String numarvechi = new String();
+JPanel mypanel1=new JPanel();
+    Connection dbconn = DBConnection.connectDB();
+if(dbconn != null){
+try{
+    PreparedStatement stivechi=(PreparedStatement)
+            dbconn.prepareStatement("UPDATE masini SET stat = 2 WHERE inma = ?");
+            stivechi.setString(1,numar_inmatriculare_vechi);
+             stivechi.executeUpdate();
+            
+            
+    
+    
+    PreparedStatement sti3=(PreparedStatement)
+         dbconn.prepareStatement("SELECT inma from masini WHERE inma = ?");     
+          
+          sti3.setString(1, numar_inmatriculare);
+          ResultSet res1 = sti3.executeQuery();
+          boolean ex1 = res1.next();
+   
+    if(ex1){
+        PreparedStatement sti2=(PreparedStatement)
+         dbconn.prepareStatement("SELECT inma FROM clienti WHERE inma = ?");     
+          
+          sti2.setString(1, numar_inmatriculare);
+          ResultSet res2 = sti2.executeQuery();
+          boolean ex2 = res2.next();
+    
+         if(!ex2){
+         PreparedStatement sti1=(PreparedStatement)
+         dbconn.prepareStatement("UPDATE clienti SET inma=? WHERE inma = ?");
+         
+         sti1.setString(1,numar_inmatriculare);
+         sti1.setString(2,numar_inmatriculare_vechi);
+         sti1.executeUpdate();
+          JOptionPane.showMessageDialog(mypanel1, "Masinia a fost schimbata","Suces",JOptionPane.INFORMATION_MESSAGE);
+         
+         
+
+    }
+         else{
+         JOptionPane.showMessageDialog(mypanel1, "Masinia este atribuita unui client sau este in mentenanta","Suces",JOptionPane.INFORMATION_MESSAGE);
+         }
+    }
+         else
+         {
+         JOptionPane.showMessageDialog(mypanel1, "Masina n nu exista in baza de date","ERORR",JOptionPane.INFORMATION_MESSAGE);
+         }
+    /*
+    PreparedStatement sti1=(PreparedStatement)
+         dbconn.prepareStatement("DELETE FROM clienti WHERE inma=?;");
+         sti1.setString(1,numar_inmatriculare);
+         sti1.executeUpdate();
+    */
+
+    
+    
+    
+}catch(SQLException ex){
+   Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+}
+}
+else 
+{
+     JOptionPane.showMessageDialog(mypanel1, "NU MERE","ERORR",JOptionPane.INFORMATION_MESSAGE);  
+    System.out.println("Database connection failed");
+}
+
+
+
+
+}
 StringBuilder email = new StringBuilder();
              StringBuilder data_retur = new StringBuilder();
              StringBuilder numar_inmatriculare = new StringBuilder();
              ArrayList<String> lista = new ArrayList<>();
 
-             
-             
-  public void sendauto()
+
+
+public void sendauto()
    {         
    Connection dbconn = DBConnection.connectDB();
     if(dbconn != null){
@@ -591,9 +610,4 @@ public static void emailsend1(String mail) {
         }
     }
 
-
-
 }
-
-
-
